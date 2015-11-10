@@ -55,14 +55,22 @@ public class SwiftLoader: UIView {
         return Singleton.instance
     }
     
-    public class func show(animated animated: Bool) {
-        self.show(title: nil, animated: animated)
+	public class func show(animated: Bool, parent: UIView) {
+		self.show(title: nil, animated: animated, topMargin: 0, parent: parent)
+    }
+	
+	public class func show(animated: Bool, topMargin: Int, parent: UIView) {
+		self.show(title: nil, animated: animated, topMargin: topMargin, parent: parent)
     }
     
-    public class func show(title title: String?, animated : Bool) {
-        
-        let currentWindow : UIWindow = UIApplication.shared.keyWindow!
-        
+	public class func show(title: String?, animated: Bool, parent: UIView) {
+		self.show(title: title, animated: animated, topMargin: 0, parent: parent)
+    }
+    
+	// CHANGED 2015-05-04, PHIPER, UIApplication.sharedApplication() is not available for keyboard extensions
+	public class func show(title title: String?, animated : Bool, topMargin: Int, parent : UIView) {
+		let currentWindow = parent
+		
         let loader = SwiftLoader.sharedInstance
         loader.canUpdated = true
         loader.animated = animated
