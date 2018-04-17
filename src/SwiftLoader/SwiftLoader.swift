@@ -30,7 +30,7 @@ public class SwiftLoader: UIView {
         }
     }
     
-    func rotated(notification: NSNotification) {
+    @objc func rotated(notification: NSNotification) {
         
         let loader = SwiftLoader.sharedInstance
         
@@ -68,7 +68,7 @@ public class SwiftLoader: UIView {
     }
     
 	// CHANGED 2015-05-04, PHIPER, UIApplication.sharedApplication() is not available for keyboard extensions
-	public class func show(title title: String?, animated : Bool, topMargin: Int, parent : UIView) {
+	public class func show(title: String?, animated : Bool, topMargin: Int, parent : UIView) {
 		let currentWindow = parent
 		
         let loader = SwiftLoader.sharedInstance
