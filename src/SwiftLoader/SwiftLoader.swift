@@ -259,8 +259,8 @@ public class SwiftLoader: UIView {
         }
         
         func drawBackgroundCircle(partial : Bool) {
-            let startAngle : CGFloat = CGFloat(M_PI) / CGFloat(2.0)
-            var endAngle : CGFloat = (2.0 * CGFloat(M_PI)) + startAngle
+            let startAngle : CGFloat = CGFloat.pi / CGFloat(2.0)
+            var endAngle : CGFloat = (2.0 * CGFloat.pi) + startAngle
             
             let center : CGPoint = CGPoint(x: self.bounds.size.width / 2,y: self.bounds.size.height / 2)
             let radius : CGFloat = (CGFloat(self.bounds.size.width) - CGFloat(self.lineWidth!)) / CGFloat(2.0)
@@ -269,7 +269,7 @@ public class SwiftLoader: UIView {
             processBackgroundPath.lineWidth = CGFloat(self.lineWidth!)
             
             if (partial) {
-                endAngle = (1.8 * CGFloat(M_PI)) + startAngle
+                endAngle = (1.8 * CGFloat.pi) + startAngle
             }
             
             processBackgroundPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
@@ -285,7 +285,7 @@ public class SwiftLoader: UIView {
             self.drawBackgroundCircle(partial: true)
             
             let rotationAnimation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-            rotationAnimation.toValue = NSNumber(value: M_PI * 2.0)
+            rotationAnimation.toValue = NSNumber(value: Double.pi * 2.0)
             rotationAnimation.duration = 1;
             rotationAnimation.isCumulative = true;
             rotationAnimation.repeatCount = HUGE;
