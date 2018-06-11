@@ -78,7 +78,7 @@ public class SwiftLoader: UIView {
         loader.update()
         
         NotificationCenter.default.addObserver(loader, selector: #selector(loader.rotated(notification: )),
-                                                name: NSNotification.Name.UIDeviceOrientationDidChange,
+                                                name: UIDevice.orientationDidChangeNotification,
                                                 object: nil)
         
         let height : CGFloat = UIScreen.main.bounds.size.height
@@ -237,7 +237,7 @@ public class SwiftLoader: UIView {
             self.backgroundLayer = CAShapeLayer()
             self.backgroundLayer?.strokeColor = self.config.spinnerColor.cgColor
             self.backgroundLayer?.fillColor = self.backgroundColor?.cgColor
-            self.backgroundLayer?.lineCap = kCALineCapRound
+            self.backgroundLayer?.lineCap = convertToCAShapeLayerLineCap(convertFromCAShapeLayerLineCap(CAShapeLayerLineCap.round))
             self.backgroundLayer?.lineWidth = CGFloat(self.lineWidth!)
             self.layer.addSublayer(self.backgroundLayer!)
         }
@@ -361,3 +361,13 @@ public class SwiftLoader: UIView {
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToCAShapeLayerLineCap(_ input: String) -> CAShapeLayerLineCap {
+	return CAShapeLayerLineCap(rawValue: input)
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCAShapeLayerLineCap(_ input: CAShapeLayerLineCap) -> String {
+	return input.rawValue
+}
